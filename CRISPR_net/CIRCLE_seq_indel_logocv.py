@@ -16,6 +16,10 @@ tsite_dict = {}
 for idx, row in targetsite_rna.iterrows():
     tsite_dict[row['gRNA_seq']] = row['Targetsite']
 print(tsite_dict)
+if os.path.isdir('../encoded_data'):
+    pass
+else:
+    os.mkdir('../encoded_data')
 
 
 def conv_lstm_predict(X_test, weight_file,structure_file):
@@ -47,16 +51,23 @@ def circle_seq_logv_indels_roc():
         pkl.dump([X, y, read, sgRNA_types], open(file_path, "wb"))
     path = "../saved_models/"
     weights_files = glob.glob(path + "ConvLSTM_indel_weights_dim7_indels*.h5")
-    structure_files = glob.glob(path + "ConvLSTM_indel_structure_dim7_nnn.json")
-    print(weights_files)
-    print(structure_files)
+    structure_file = glob.glob(path + "ConvLSTM_indel_structure_dim7_nnn.json")
+    structure = structure_file[0]
+    # print(weights_files)
+    # print(structure_file)
+    from keras.models import model_from_json
+    json_file = open(structure, 'r')
+    loaded_model_json = json_file.read()
+    json_file.close()
+    crispr_net = model_from_json(loaded_model_json)
+    print(crispr_net.summary())
+
     tprs = []
     aucs = []
     mean_fpr = np.linspace(0, 1, 100)
     i = 0
     for i in range(len(weights_files)):
         weights = weights_files[i]
-        structure = structure_files[0]
         rna_seq = re.split("_|\.", weights)[-2]
         print(rna_seq)
         train_idx = sgRNA_types != rna_seq

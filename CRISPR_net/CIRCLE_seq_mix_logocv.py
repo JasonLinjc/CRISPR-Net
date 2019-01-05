@@ -17,6 +17,11 @@ for idx, row in targetsite_rna.iterrows():
     tsite_dict[row['gRNA_seq']] = row['Targetsite']
 print(tsite_dict)
 
+if os.path.isdir('../encoded_data'):
+    pass
+else:
+    os.mkdir('../encoded_data')
+
 
 def conv_lstm_predict(X_test, weight_file,structure_file):
     from keras.models import model_from_json
@@ -26,6 +31,7 @@ def conv_lstm_predict(X_test, weight_file,structure_file):
     loaded_model = model_from_json(loaded_model_json)
     # load weights into new model
     loaded_model.load_weights(weight_file)
+    print(loaded_model.summary())
     print("Loaded model from disk!")
     y_pred = loaded_model.predict(X_test).flatten()
     print(y_pred)
@@ -48,10 +54,17 @@ def circle_seq_logv_roc():
 
     path = "../saved_models/"
     weights_files = glob.glob(path + "ConvLSTM_indel_weights_dim7_nnn*.h5")
-    structure_files = glob.glob(path + "ConvLSTM_indel_structure_dim7_nnn.json")
-    print(weights_files)
-    print(structure_files)
-    structure = structure_files[0]
+    structure_file = glob.glob(path + "ConvLSTM_indel_structure_dim7_nnn.json")
+    # print(weights_files)
+    # print(structure_file)
+    structure = structure_file[0]
+    from keras.models import model_from_json
+    json_file = open(structure, 'r')
+    loaded_model_json = json_file.read()
+    json_file.close()
+    crispr_net = model_from_json(loaded_model_json)
+    print(crispr_net.summary())
+
     tprs = []
     aucs = []
     mean_fpr = np.linspace(0, 1, 100)

@@ -403,47 +403,6 @@ def encode_validation1_data(with_indel = False, dim_half=True):
     print(np.array(sgRNA22_code).shape)
     return np.array(sgRNA22_code), np.array(sgRNA22_labels)
 
-# build_22sgRNA_data()
-# encode_Haeussler_mm6()
-# encode_validation1_data()
-"""
-codes, vals = encode_ele_hmg_data(with_indel=True)
-print(codes.shape)
-print(vals.shape)
-codes, vals = encode_CD33_mut(with_indel=True)
-print(codes.shape)
-print(vals.shape)
-codes, vals = encode_ele_guideseq_data(with_indel=True)
-print(codes.shape)
-print(vals.shape)
-codes, vals = encode_22sgRNA_data(with_indel=True)
-print(codes.shape)
-print(vals.shape)
-"""
-
-"""
-codes, vals = encode_CD33_mut(with_indel=True)
-print(codes)
-"""
-
-# encode_cd33_indels_data()
-
-# build_22sgRNA_data()
-# encode_22sgRNA_data()
-
-"""
-import pickle as pkl
-import os
-file_path = "../tmp_code/CIRCLE_seq_data_for_testing_dim7_excluded_seqpairs.pkl"
-if os.path.exists(file_path):
-    X, y, read, sgRNA_types, infos = pkl.load(open(file_path, "rb"))
-else:
-    X, y, read, sgRNA_types, infos = encode_CIRCLE_data(dim_half=False)
-    X = X.reshape((len(X), 1, 24, 7))
-    pkl.dump([X, y, read, sgRNA_types, infos], open(file_path, "wb"))
-"""
-
-
 
 
 
