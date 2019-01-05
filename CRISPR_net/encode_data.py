@@ -223,17 +223,19 @@ def encode_cd33_indels_data(dim_half=True):
     return cd33_codes, cd33_reg_vals
 
 
-def encode_CIRCLE_data(dim_half=True):
+def encode_CIRCLE_data(type='Mix'):
 
     print("Encoding CIRCLE-seq dataset...")
-    circle_data = pd.read_csv("../data/CIRCLE_seq_whole_data_excluded_nnn_info.csv")
+    if type == 'Mix':
+        circle_data = pd.read_csv("../data/CIRCLE_seq_data_Mix_info.csv")
+    else:
+        circle_data = pd.read_csv("../data/CIRCLE_seq_data_Indel_info.csv")
+
     circle_codes = []
     circle_labels = []
     reads = []
     sgRNA_types = []
-    mut_types = []
     seq_pairs = []
-    infos = []
     for idx, row in circle_data.iterrows():
         sgRNA_seq = row['sgRNA_seq']
         off_seq = row['off_seq']
@@ -242,12 +244,8 @@ def encode_CIRCLE_data(dim_half=True):
         sgRNA_type = row['sgRNA_type']
         # mut_type = row['mut_type']
 
-        if dim_half:
-            en = Encoder_sgRNA_off.Encoder(sgRNA_seq = sgRNA_seq, off_seq=off_seq, with_category=True, label=label, with_indel=True)
-            circle_codes.append(en.sgRNA_off_code)
-        else:
-            en = Encoder_sgRNA_off.Encoder(sgRNA_seq=sgRNA_seq, off_seq=off_seq, with_category=True, label=label, with_indel=True, dim_half=False)
-            circle_codes.append(en.on_off_code)
+        en = Encoder_sgRNA_off.Encoder(sgRNA_seq=sgRNA_seq, off_seq=off_seq, with_category=True, label=label, with_indel=True, dim_half=False)
+        circle_codes.append(en.on_off_code)
         circle_labels.append(label)
         seq_pairs.append([sgRNA_seq, off_seq])
         reads.append(read_val)
@@ -260,9 +258,6 @@ def encode_CIRCLE_data(dim_half=True):
     circle_codes = np.array(circle_codes)
     circle_labels = np.array(circle_labels)
     sgRNA_types = np.array(sgRNA_types)
-    mut_types = np.array(mut_types)
-    seq_pairs = np.array(seq_pairs)
-    infos = np.array(infos)
     return circle_codes, circle_labels, reads, sgRNA_types
 
 

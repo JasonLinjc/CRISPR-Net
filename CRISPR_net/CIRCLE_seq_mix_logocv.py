@@ -38,11 +38,11 @@ def circle_seq_logv_roc():
     import encode_data
     from scipy import interp
     from sklearn import metrics
-    file_path = "../encoded_data/CIRCLE_seq_data_for_testing_dim7_excluded_nnn.pkl"
+    file_path = "../encoded_data/CIRCLE_seq_data_Mix.pkl"
     if os.path.exists(file_path):
         X, y, read, sgRNA_types = pkl.load(open(file_path, "rb"))
     else:
-        X, y, read, sgRNA_types = encode_data.encode_CIRCLE_data(dim_half=False)
+        X, y, read, sgRNA_types = encode_data.encode_CIRCLE_data(type='Mix')
         X = X.reshape((len(X), 1, 24, 7))
         pkl.dump([X, y, read, sgRNA_types], open(file_path, "wb"))
 
