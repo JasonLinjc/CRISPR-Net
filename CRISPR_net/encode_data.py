@@ -83,7 +83,6 @@ def build_22sgRNA_data():
         str = str.upper()
         t_off_list.append(str)
 
-
     print(t_off_list[0])
     print(p_off_list[0])
 
@@ -134,7 +133,7 @@ def encode_22sgRNA_data(with_indel = False, dim_half=True):
         if dim_half:
             en = Encoder_sgRNA_off.Encoder(sgRNA_seq=sgRNA_seq, off_seq=off_seq, with_category=True, label=label,
                                        with_indel=with_indel)
-            sgRNA22_code.append(en.sgRNA_off_code)
+            sgRNA22_code.append(en.on_off_code)
         else:
             en = Encoder_sgRNA_off.Encoder(sgRNA_seq=sgRNA_seq, off_seq=off_seq, with_category=True, label=label,
                                            with_indel=with_indel, dim_half=False)
@@ -158,7 +157,7 @@ def encode_ele_guideseq_data(with_indel=False, dim_half=True):
         reg_val = row['GUIDE-SEQ Reads']
         if dim_half:
             en = Encoder_sgRNA_off.Encoder(sgRNA_seq=sgRNA_seq, off_seq=off_seq, with_reg_val=True, value=reg_val, with_indel=with_indel)
-            guideseq_code.append(en.sgRNA_off_code)
+            guideseq_code.append(en.on_off_code)
         else:
             en = Encoder_sgRNA_off.Encoder(sgRNA_seq=sgRNA_seq, off_seq=off_seq, with_reg_val=True, value=reg_val,
                                            with_indel=with_indel, dim_half=False)

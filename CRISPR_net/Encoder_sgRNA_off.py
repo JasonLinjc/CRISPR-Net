@@ -59,7 +59,7 @@ class Encoder:
         sgRNA_off_code = []
         for i in range(len(self.sgRNA_code)):
             sgRNA_off_code.append(np.bitwise_or(self.sgRNA_code[i], self.off_code[i]))
-        self.sgRNA_off_code = np.array(sgRNA_off_code)
+        self.on_off_code = np.array(sgRNA_off_code)
 
     def encode_on_off_dim7(self):
         self.encode_sgRNA()
@@ -84,11 +84,14 @@ class Encoder:
             on_off_dim7_codes.append(np.concatenate((diff_code, dir_code)))
         self.on_off_code = np.array(on_off_dim7_codes)
 
-
 """
-e = Encoder(sgRNA_seq="AGCTGN", off_seq="CGCGTT", dim_half=False)
+# Testing 
+e = Encoder(sgRNA_seq="AGCTGA", off_seq="CGCGTT", dim_half=True)
+print(e.on_off_code)
+e = Encoder(sgRNA_seq="AGCTGA", off_seq="CGCGTT", dim_half=False)
 print(e.on_off_code)
 """
+
 
 
 
