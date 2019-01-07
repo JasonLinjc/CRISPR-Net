@@ -22,9 +22,6 @@ Following Python packages should be installed:
 <li><p>TensorFlow</p></li>
 </ul>
 
-# REFERENCE
-
-[1] Hui Peng, Yi Zheng, Zhixun Zhao, Tao Liu, Jinyan Li; Recognition of CRISPR/Cas9 off-target sites through ensemble learning of uneven mismatch distributions, Bioinformatics, Volume 34, Issue 17, 1 September 2018, Pages i757–i765, https://doi.org/10.1093/bioinformatics/bty558
 
 # CONTAINS:
 <ul>
