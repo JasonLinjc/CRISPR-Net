@@ -267,6 +267,6 @@ def comparison_roc():
 
 
 test_on_sgRNA22_dataset()
-# comparison_roc()
-# comparison_prc()
+comparison_roc()
+comparison_prc()
 
