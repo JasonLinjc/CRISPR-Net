@@ -12,17 +12,6 @@ Following Python packages should be installed:
 <li><p>TensorFlow</p></li>
 </ul>
 
-The Keras version of CNN were conducted by Python 3.6, TensorFlow 1.9.0, Keras 2.2.0.
-Following Python packages should be installed:
-<ul>
-<li><p>scipy</p></li>
-<li><p>numpy</p></li>
-<li><p>pandas</p></li>
-<li><p>Keras</p></li>
-<li><p>TensorFlow</p></li>
-</ul>
-
-
 # CONTAINS:
 <ul>
 <li><p>CFDScoring/cfd-score-calculator.py : Python script to run CFD score </p></li>
