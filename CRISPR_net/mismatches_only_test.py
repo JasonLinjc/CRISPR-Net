@@ -142,7 +142,7 @@ def test_on_sgRNA22_dataset():
 
     X_test = X.reshape(len(X), 1, 23, 4)
     y_pred = conv_lstm_predict(X_test)
-    # pkl.dump(y_pred, open("./results/cnn_lstm_22sgRNA_results.pkl", "wb"))
+    pkl.dump(y_pred, open("./results/cnn_lstm_22sgRNA_results.pkl", "wb"))
     fpr, tpr, thresholds = metrics.roc_curve(y, y_pred, pos_label=1)
     roc_auc = metrics.auc(fpr, tpr)
     print(roc_auc)
@@ -159,7 +159,7 @@ def test_on_sgRNA22_dataset():
     plt.legend(loc="lower right")
     plt.show()
 
-def comparison_roc():
+def comparison_prc():
     file_path = "../encoded_data/22sgRNA_validation2_data_for_testing.pkl"
     _, gRNA22_label = pkl.load(open(file_path, "rb"))
 
@@ -222,7 +222,51 @@ def comparison_roc():
     # plt.savefig("./validataion2_prc.pdf", format="pdf")
     plt.show()
 
+def run_roc(y_pred, label):
+    fpr, tpr, thresholds = metrics.roc_curve(label, y_pred, pos_label=1)
+    roc_auc = metrics.auc(fpr, tpr)
+    return fpr, tpr, roc_auc
+
+def comparison_roc():
+    file_path = "../encoded_data/22sgRNA_validation2_data_for_testing.pkl"
+    _, gRNA22_label = pkl.load(open(file_path, "rb"))
+    plt.grid(linestyle=':', lw=1.5)
+    cfd_22 = pkl.load(open("./results/elevation_22sgRNA_results.pkl", "rb"), encoding="latin1")
+    fpr, tpr, roc_auc = run_roc(cfd_22, gRNA22_label)
+
+    plt.plot(fpr, tpr, color='y', linestyle="-", lw=1.5, label='Elevation (AUROC = %0.3f)' % roc_auc)
+
+    cfd_22 = pkl.load(open("./results/cfd_22sgRNA_results.pkl", "rb"), encoding="latin1")
+    fpr, tpr, roc_auc = run_roc(cfd_22, gRNA22_label)
+    plt.plot(fpr, tpr, color='green', linestyle="-", lw=1.5, label='CFD (AUROC = %0.3f)' % roc_auc)
+
+    cfd_22 = pkl.load(open("./results/phsvm_22sgRNA_scores_6mis_new.pkl", "rb"), encoding="latin1")
+    fpr, tpr, roc_auc = run_roc(cfd_22, gRNA22_label)
+    plt.plot(fpr, tpr, color='blue', linestyle="-", lw=1.5, label='Ensemble SVM (AUROC = %0.3f)' % roc_auc)
+
+    cfd_22 = pkl.load(open("./results/cnn_std_22sgRNA_results.pkl", "rb"), encoding="latin1")
+    fpr, tpr, roc_auc = run_roc(cfd_22, gRNA22_label)
+    plt.plot(fpr, tpr, color='purple', linestyle="-", lw=1.5, label='CNN_std (AUROC = %0.3f)' % roc_auc)
+
+    cfd_22 = pkl.load(open("./results/cnn_lstm_22sgRNA_results.pkl", "rb"), encoding="latin1")
+    fpr, tpr, roc_auc = run_roc(cfd_22, gRNA22_label)
+    plt.plot(fpr, tpr, color='red', linestyle="-", lw=1.5, label='CRISPR-Net (AUROC = %0.3f)' % roc_auc)
+
+
+    plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+    plt.xlim([-0.02, 1.02])
+    plt.ylim([-0.02, 1.02])
+    plt.tick_params(axis='x', labelcolor="black")
+    plt.tick_params(axis='y', labelcolor="black")
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.legend(loc="lower right", facecolor="w", edgecolor="black")
+    plt.tight_layout()
+    # plt.savefig("./validation2.pdf", format="pdf")
+    plt.show()
 
 
 test_on_sgRNA22_dataset()
+# comparison_roc()
+# comparison_prc()
 
