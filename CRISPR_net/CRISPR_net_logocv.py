@@ -13,11 +13,6 @@ import numpy as np
 from keras.layers import Input, Dense, Reshape, Conv2D, Flatten, LSTM, BatchNormalization, Bidirectional
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
-
-"""
-import matplotlib
-matplotlib.use('Agg')
-"""
 from keras.models import Model, model_from_json
 from sklearn.model_selection import StratifiedKFold
 import encode_data
@@ -33,6 +28,17 @@ import time
 seed(6)
 from tensorflow import set_random_seed
 set_random_seed(66)
+
+
+targetsite_rna = pd.read_csv("../data/CIRCLE_seq_gRNA_dict.csv")
+tsite_dict = {}
+for idx, row in targetsite_rna.iterrows():
+    tsite_dict[row['gRNA_seq']] = row['Targetsite']
+print(tsite_dict)
+if os.path.isdir('../encoded_data'):
+    pass
+else:
+    os.mkdir('../encoded_data')
 
 
 def ConvLSTM_indel(X_train, y_train, model_name="logv", using_pre_train=False):
@@ -90,12 +96,12 @@ def ConvLSTM_indel(X_train, y_train, model_name="logv", using_pre_train=False):
     print("Saved model to disk!")
 
 def conv_lstm_predict(X_test, model_name="logv"):
-    json_file = open("./circleseq_models/ConvLSTM_indel_structure_" +  model_name + ".json", 'r')
+    json_file = open("./logocv_models/CRISPR_net_indel_structure_" +  model_name + ".json", 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     loaded_model = model_from_json(loaded_model_json)
     # load weights into new model
-    loaded_model.load_weights("./circleseq_models/ConvLSTM_indel_weights_"+ model_name + ".h5")
+    loaded_model.load_weights("./logocv_models/CRISPR_net_indel_weights_"+ model_name + ".h5")
     print("Loaded model from disk!")
 
     y_pred = loaded_model.predict(X_test).flatten()
@@ -103,7 +109,7 @@ def conv_lstm_predict(X_test, model_name="logv"):
     return y_pred
 
 def logocv_on_circle_data():
-    file_path = "../tmp_code/CIRCLE_seq_data_for_testing_dim7_excluded_nnn.pkl"
+    file_path = "../encoded_data/CIRCLE_seq_data_Mix.pkl"
     if os.path.exists(file_path):
         X, y, read, sgRNA_types = pkl.load(open(file_path, "rb"))
     else:
@@ -132,19 +138,17 @@ def logocv_on_circle_data():
 
         print("training data:", len(X_train), " testing data:", len(X_test))
 
-        ConvLSTM_indel(X_train, y_train, model_name="dim7_nnn1_" + seq, using_pre_train=False)
-        y_pred = conv_lstm_predict(X_test, model_name="dim7_nnn1_" + seq)
+        ConvLSTM_indel(X_train, y_train, model_name="dim7_mix_" + seq)
+        y_pred = conv_lstm_predict(X_test, model_name="dim7_mix_" + seq)
 
         fpr, tpr, thresholds = metrics.roc_curve(y_test, y_pred)
         tprs.append(interp(mean_fpr, fpr, tpr))
         tprs[-1][0] = 0.0
         roc_auc = metrics.auc(fpr, tpr)
         print(seq, roc_auc)
-        f = open("./cnn_lstm_result_dim7_nnn1.txt", "a+")
-        print(seq, roc_auc, file=f)
         aucs.append(roc_auc)
         plt.plot(fpr, tpr, lw=1, alpha=0.3,
-                 label='%s (AUC = %0.4f)' % (seq_list[i], roc_auc))
+                 label='%s (AUC = %0.4f)' % (tsite_dict[seq], roc_auc))
         i += 1
 
     plt.plot([0, 1], [0, 1], linestyle='--', lw=2, color='r',
@@ -175,3 +179,5 @@ def logocv_on_circle_data():
     plt.legend(loc="lower right")
     # plt.savefig("./logv_on_circle_excluded_nnn1.png")
     plt.show()
+
+logocv_on_circle_data()

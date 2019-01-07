@@ -159,6 +159,70 @@ def test_on_sgRNA22_dataset():
     plt.legend(loc="lower right")
     plt.show()
 
+def comparison_roc():
+    file_path = "../encoded_data/22sgRNA_validation2_data_for_testing.pkl"
+    _, gRNA22_label = pkl.load(open(file_path, "rb"))
+
+    ele_22 = pkl.load(open("./results/elevation_22sgRNA_results.pkl", "rb"), encoding="latin1")
+    prc, rec, _ = metrics.precision_recall_curve(gRNA22_label, ele_22)
+    prc[[rec == 0]] = 1.0
+    print(prc)
+    print(rec)
+    # print(len(gRNA5_label[gRNA5_label == 1]))
+    prc_auc = metrics.auc(rec, prc)
+    print(prc_auc)
+    # prcs[-1][0] = 1.0
+    plt.plot(rec, prc, lw=1.5, c="y",
+             label='Elevation (AUPRC = %0.3f)' % (prc_auc))
+    # plt.show()
+    cfd_22 = pkl.load(open("./results/cfd_22sgRNA_results.pkl", "rb"), encoding="latin1")
+    prc, rec, _ = metrics.precision_recall_curve(gRNA22_label, cfd_22)
+    prc[[rec == 0]] = 1.0
+    prc_auc = metrics.auc(rec, prc)
+    print(prc_auc)
+    # prcs[-1][0] = 1.0
+    plt.plot(rec, prc, lw=1.5, c="g",
+             label='CFD (AUPRC = %0.3f)' % (prc_auc))
+    # plt.show()
+    cfd_22 = pkl.load(open("./results/phsvm_22sgRNA_scores_6mis_new.pkl", "rb"), encoding="latin1")
+    prc, rec, _ = metrics.precision_recall_curve(gRNA22_label, cfd_22)
+    prc[[rec == 0]] = 1.0
+    prc_auc = metrics.auc(rec, prc)
+    print(prc_auc)
+    # prcs[-1][0] = 1.0
+    plt.plot(rec, prc, lw=1.5, c="b",
+             label='Ensemble SVM (AUPRC = %0.3f)' % (prc_auc))
+
+    cfd_22 = pkl.load(open("./results/cnn_std_22sgRNA_results.pkl", "rb"), encoding="latin1")
+    prc, rec, _ = metrics.precision_recall_curve(gRNA22_label, cfd_22)
+    prc[[rec == 0]] = 1.0
+    prc_auc = metrics.auc(rec, prc)
+    print(prc_auc)
+    plt.plot(rec, prc, lw=1.5, c="purple",
+             label='CNN_std (AUPRC = %0.3f)' % (prc_auc))
+
+    cfd_22 = pkl.load(open("./results/cnn_lstm_22sgRNA_results.pkl", "rb"), encoding="latin1")
+    prc, rec, _ = metrics.precision_recall_curve(gRNA22_label, cfd_22)
+    prc[[rec == 0]] = 1.0
+    prc_auc = metrics.auc(rec, prc)
+    print(prc_auc)
+    plt.plot(rec, prc, lw=1.5, c="r",
+             label='CRISPR-Net (AUPRC = %0.3f)' % (prc_auc))
+    # prcs[-1][0] = 1.0
+
+    plt.xlim([-0.02, 1.02])
+    plt.ylim([-0.02, 0.5])
+    plt.grid(linestyle=':', lw=1.5)
+    plt.tick_params(axis='x', labelcolor="black")
+    plt.tick_params(axis='y', labelcolor="black")
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.legend(loc="upper right", facecolor="w", edgecolor="black")
+    plt.tight_layout()
+    # plt.savefig("./validataion2_prc.pdf", format="pdf")
+    plt.show()
+
+
 
 test_on_sgRNA22_dataset()
 

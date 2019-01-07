@@ -37,7 +37,7 @@ def conv_lstm_predict(X_test, weight_file,structure_file):
     print(y_pred)
     return y_pred
 
-def circle_seq_logv_roc():
+def circle_seq_indel_logv_roc():
     import glob
     import re
     import os
@@ -130,4 +130,4 @@ def circle_seq_logv_roc():
     # plt.savefig("./circle_logocv_roc.png")
     plt.show()
 
-circle_seq_logv_roc()
+circle_seq_indel_logv_roc()
