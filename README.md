@@ -20,13 +20,20 @@ CRISPR-Net can run with:
 
 positional arguments: input_file
 
+optional arguments:
+  -h, --help  show this help message and exit
+
 Example input file:
 
 GAGT_CCGAGCAGAAGAAGAATGG,GAGTACCAAGTAGAAGAAAAATTT
 GTTGCCCCACAGGGCAGTAAAGG,GTGGACACCCCGGGCAGGAAAGG
 
-optional arguments:
-  -h, --help  show this help message and exit
+Save it as 'input.txt'.
+
+Now you can run CRISPR-Net as following:
+
+    $> ./CRISPR_net.py input.txt G out.txt
+    ...
   
 --------------------------------------------------
 CRISPR-Net-mismatches-only can run with:
