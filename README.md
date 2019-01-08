@@ -20,8 +20,8 @@ CRISPR-Net can run with:
 
 CRISPR-Net v1.0 (Jan 10 2019)
 
-positional arguments:
-  input_file  Example input file:
+positional arguments: input_file  
+Example input file:
               GAGT_CCGAGCAGAAGAAGAATGG,GAGTACCAAGTAGAAGAAAAATTT
               GTTGCCCCACAGGGCAGTAAAGG,GTGGACACCCCGGGCAGGAAAGG
 
