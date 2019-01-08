@@ -29,14 +29,16 @@ optional arguments:
   -h, --help  show this help message and exit
   
 --------------------------------------------------
-usage: CRISPR_net_mismatches_only.py [-h] input_file
+CRISPR-Net-mismatches-only can run with:
 
-CRISPR-Net v1.0 (Jan 10 2019)
+    CRISPR_net_mismatches_only.py [-h] input_file
 
-positional arguments:
-  input_file  Example input file:
-              GATGGTAGATGGAGACTCAGAGG,GGTAGGAAATGGAGAGGCAGAGG
-              GGGTGGGGGGAGTTTGCTCCCGG,GTGTGGGGTAAATTTGCTCCCAG
+positional arguments: input_file
+
+Example input file:
+
+GATGGTAGATGGAGACTCAGAGG,GGTAGGAAATGGAGAGGCAGAGG
+GGGTGGGGGGAGTTTGCTCCCGG,GTGTGGGGTAAATTTGCTCCCAG
 
 optional arguments:
   -h, --help  show this help message and exit
