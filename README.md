@@ -18,9 +18,8 @@ CRISPR-Net can run with:
 
     CRISPR_net.py [-h] input_file
 
-CRISPR-Net v1.0 (Jan 10 2019)
+positional arguments: input_file
 
-positional arguments: input_file  
 Example input file:
               GAGT_CCGAGCAGAAGAAGAATGG,GAGTACCAAGTAGAAGAAAAATTT
               GTTGCCCCACAGGGCAGTAAAGG,GTGGACACCCCGGGCAGGAAAGG
