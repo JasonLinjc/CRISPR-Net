@@ -2,7 +2,7 @@
 This repository includes a fused long-term recurrent convolutional neural network for predicting the off-targets activities with indels and mismatches in CRISPR/Cas9 gene editing.
 
 # PREREQUISITE
-The models for off-target predicitons were conducted by using Python 2.7.13 and TensorFlow v1.4.1. 
+CRISPR-Net was conducted by using Python 3.6 and TensorFlow v1.4.1. 
 Following Python packages should be installed:
 <ul>
 <li><p>scipy</p></li>
