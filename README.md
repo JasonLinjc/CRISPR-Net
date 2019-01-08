@@ -27,12 +27,14 @@ Example input file:
 
 GAGT_CCGAGCAGAAGAAGAATGG,GAGTACCAAGTAGAAGAAAAATTT
 GTTGCCCCACAGGGCAGTAAAGG,GTGGACACCCCGGGCAGGAAAGG
+GGGTGGGGGGAGTTTGCTCCCGG,GTGTGGGGTAAATTTGCTCCCAG
+GGGTGGGGGGAGTTTGCTCCAGG,AGGTGGGGTGA_TTTGCTCCAGG
 
 Save it as 'input.txt'.
 
 Now you can run CRISPR-Net as following:
 
-    $> ./CRISPR_net.py input.txt G out.txt
+    $> ./CRISPR_net.py input.txt
     ...
   
 --------------------------------------------------
