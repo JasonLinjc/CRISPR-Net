@@ -36,7 +36,7 @@ Save it as 'input.txt'.
 
 Now you can run CRISPR-Net as following:
 
-    $> ./CRISPR_net.py input.txt
+    $> python ./CRISPR_net.py input.txt
     ...
     
 Then output will be generated:
@@ -73,7 +73,7 @@ Save it as 'input.txt'.
 
 Now you can run CRISPR-Net-mismatches-only as following:
 
-    $> ./CRISPR_net_mismatches_only.py input.txt
+    $> python ./CRISPR_net_mismatches_only.py input.txt
     ...
     
 Then output file will be generated:
