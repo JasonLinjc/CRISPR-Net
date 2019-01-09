@@ -36,20 +36,21 @@ Now you can run CRISPR-Net as following:
 
     $> ./CRISPR_net.py input.txt
     ...
-Then output file will be generated :
-- The first column of the output file indicates the given query sequence,
-- The second column is the FASTA title (if you downloaded it from UCSC or Ensembl, it is usually a chromosome name),
-- The third column is the position of the off-target site (same convention with Bowtie),
+    
+Then output file will be generated and saved to ./CRISPR_net_results.csv:
 
-out.txt:
+- The first column of the output file indicates the on-target sequence,
+- The second column of the output file indicates the off-target sequence,
+- The third column is the off-taget score  
+
+CRISPR_net_results.csv:
                      
                       on_seq                   off_seq  CRISPR_net_score
-    GAGT_CCGAGCAGAAGAAGAATGG  GAGTACCAAGTAGAAGAAAAATTT     7.498138e-10
-    GTTGCCCCACAGGGCAGTAAAGG   GTGGACACCCCGGGCAGGAAAGG      8.658309e-08
-    GGGTGGGGGGAGTTTGCTCCCGG   GTGTGGGGTAAATTTGCTCCCAG      6.078470e-01
-    GGGTGGGGGGAGTTTGCTCCAGG   AGGTGGGGTGA_TTTGCTCCAGG      3.451956e-01
+    GAGT_CCGAGCAGAAGAAGAATGG  GAGTACCAAGTAGAAGAAAAATTT      7.498138e-10
+     GTTGCCCCACAGGGCAGTAAAGG   GTGGACACCCCGGGCAGGAAAGG      8.658309e-08
+     GGGTGGGGGGAGTTTGCTCCCGG   GTGTGGGGTAAATTTGCTCCCAG      6.078470e-01
+     GGGTGGGGGGAGTTTGCTCCAGG   AGGTGGGGTGA_TTTGCTCCAGG      3.451956e-01
     
-    Save the results to ./CRISPR_net_results.csv!
 --------------------------------------------------
 CRISPR-Net-mismatches-only can run with:
 
