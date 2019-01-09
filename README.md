@@ -1,8 +1,8 @@
 # CRISPR-Net: A Fused Recurrent Convolutional Network Quantifies CRISPR Off-target Activities with Indels and Mismatches
-This repository includes a fused long-term recurrent convolutional neural network named CRISPR-Net for predicting the off-targets activities with insertions, deletions and mismatches in CRISPR/Cas9 gene editing.
+This repository includes a fused long-term recurrent convolutional neural network named CRISPR-Net for predicting the off-targets activities with insertions, deletions and mismatches in CRISPR/Cas9 gene editing. There are two models that can be used to quantify the 
 
 # PREREQUISITE
-CRISPR-Net was conducted by Python 3.6 and Keras v2.2.4 (Using TensorFlow 1.12 backend) 
+CRISPR-Net was conducted by Python 3.6 and Keras 2.2.4 (using TensorFlow 1.12 backend) 
 
 Following Python packages should be installed:
 <ul>
