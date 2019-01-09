@@ -45,13 +45,13 @@ Then output will be generated:
 - The second column of the output file indicates the off-target sequence,
 - The third column is the off-taget score predicted by CRISPR-Net
 
-                       on_seq                   off_seq  CRISPR_net_score
-     GAGT_CCGAGCAGAAGAAGAATGG  GAGTACCAAGTAGAAGAAAAATTT     7.498138e-10
-     GTTGCCCCACAGGGCAGTAAAGG   GTGGACACCCCGGGCAGGAAAGG      8.658309e-08
-     GGGTGGGGGGAGTTTGCTCCCGG   GTGTGGGGTAAATTTGCTCCCAG      6.078470e-01
-     GGGTGGGGGGAGTTTGCTCCAGG   AGGTGGGGTGA_TTTGCTCCAGG      3.451956e-01
-
 and saved to ./CRISPR_net_results.csv:
+
+                       on_seq                   off_seq     CRISPR_net_score
+     GAGT_CCGAGCAGAAGAAGAATGG  GAGTACCAAGTAGAAGAAAAATTT         7.498138e-10
+     GTTGCCCCACAGGGCAGTAAAGG   GTGGACACCCCGGGCAGGAAAGG          8.658309e-08
+     GGGTGGGGGGAGTTTGCTCCCGG   GTGTGGGGTAAATTTGCTCCCAG          6.078470e-01
+     GGGTGGGGGGAGTTTGCTCCAGG   AGGTGGGGTGA_TTTGCTCCAGG          3.451956e-01
                      
 --------------------------------------------------
 
@@ -81,9 +81,9 @@ Then output file will be generated:
 
 and saved to ./CRISPR_net_results_mismatches_only.csv:
                      
-                      on_seq                  off_seq  CRISPR_net_score
-     GATGGTAGATGGAGACTCAGNGG  GGTAGGAAATGGAGAGGCAGAGG      1.283432e-17
-     GAGTCCGAGCAGAAGAAGAAAGG  GAGTTAGAGCAGAAGAAGAAAGG      3.380741e-01
+                      on_seq                  off_seq   CRISPR_net_score
+     GATGGTAGATGGAGACTCAGNGG  GGTAGGAAATGGAGAGGCAGAGG       1.283432e-17
+     GAGTCCGAGCAGAAGAAGAAAGG  GAGTTAGAGCAGAAGAAGAAAGG       3.380741e-01
 
 
 # CONTAINS:
