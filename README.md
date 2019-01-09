@@ -81,9 +81,9 @@ Then output file will be generated:
 
 and saved to ./CRISPR_net_results_mismatches_only.csv:
                      
-                      on_seq                  off_seq   CRISPR_net_score
-     GATGGTAGATGGAGACTCAGNGG  GGTAGGAAATGGAGAGGCAGAGG       1.283432e-17
-     GAGTCCGAGCAGAAGAAGAAAGG  GAGTTAGAGCAGAAGAAGAAAGG       3.380741e-01
+                      on_seq                  off_seq      CRISPR_net_score
+     GATGGTAGATGGAGACTCAGNGG  GGTAGGAAATGGAGAGGCAGAGG          1.283432e-17
+     GAGTCCGAGCAGAAGAAGAAAGG  GAGTTAGAGCAGAAGAAGAAAGG          3.380741e-01
 
 
 # CONTAINS:
