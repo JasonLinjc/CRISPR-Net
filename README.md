@@ -23,7 +23,7 @@ CRISPR-Net can run with:
 positional arguments: input_file
 
 optional arguments:
-  -h, --help  show this help message and exit
+  -h, --help  show the help message and exit
 
 Example input file:
 
@@ -60,6 +60,9 @@ CRISPR-Net-mismatches-only can run with:
     CRISPR_net_mismatches_only.py [-h] input_file
 
 positional arguments: input_file
+
+optional arguments:
+  -h, --help show the help message and exit
 
 Example input file:
 
