@@ -42,17 +42,14 @@ Then output file will be generated :
 - The third column is the position of the off-target site (same convention with Bowtie),
 
 out.txt:
-
-    GGCCGACCTGTCGCTGACGCNNN chr8    49679        GGgCatCCTGTCGCaGACaCAGG +       5
-    GGCCGACCTGTCGCTGACGCNNN chr8    517739       GcCCtgCaTGTgGCTGACGCAGG +       5
-    GGCCGACCTGTCGCTGACGCNNN chr8    599935       tGCCGtCtTcTCcCTGACGCCAG -       5
-    GGCCGACCTGTCGCTGACGCNNN chr8    5308348      GGCaGgCCTGgCttTGACGCAGG -       5
-    GGCCGACCTGTCGCTGACGCNNN chr8    9525579      GGCCcAgCTGTtGCTGAtGaAAG +       5
-    GGCCGACCTGTCGCTGACGCNNN chr8    12657177     GGCCcACCTGTgGCTGcCcaTAG -       5
-    GGCCGACCTGTCGCTGACGCNNN chr8    12808911     GGCCGACCaGgtGCTccCGCCGG +       5
-    GGCCGACCTGTCGCTGACGCNNN chr8    21351922     GGCCcACCTGaCtCTGAgGaCAG -       5
-    GGCCGACCTGTCGCTGACGCNNN chr8    21965064     GGCCGtCCTGcgGCTGctGCAGG -       5
-    GGCCGACCTGTCGCTGACGCNNN chr8    22409058     GcCCGACCccTCcCcGACGCCAG +       5
+                     
+                      on_seq                   off_seq  CRISPR_net_score
+    GAGT_CCGAGCAGAAGAAGAATGG  GAGTACCAAGTAGAAGAAAAATTT     7.498138e-10
+    GTTGCCCCACAGGGCAGTAAAGG   GTGGACACCCCGGGCAGGAAAGG      8.658309e-08
+    GGGTGGGGGGAGTTTGCTCCCGG   GTGTGGGGTAAATTTGCTCCCAG      6.078470e-01
+    GGGTGGGGGGAGTTTGCTCCAGG   AGGTGGGGTGA_TTTGCTCCAGG      3.451956e-01
+    
+    Save the results to ./CRISPR_net_results.csv!
 --------------------------------------------------
 CRISPR-Net-mismatches-only can run with:
 
