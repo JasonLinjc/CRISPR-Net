@@ -91,9 +91,8 @@ and saved to ./CRISPR_net_results_mismatches_only.csv:
 
 # CONTAINS:
 <ul>
-<li><p>CFDScoring/cfd-score-calculator.py : Python script to run CFD score </p></li>
-<li><p>predictions/cnn_std_prediction_TF.py : CNN_std conducted by TensorFlow</p></li>
-<li><p>predictions/cnn_std_keras.py : CNN_std conducted by Keras used for off-target prediction </p></li>
+<li><p>CRISPR_net/CRISPR_net.py : Python script to run CRISPR-Net for predicting off-target activities with indels and mismathces </p></li>
+<li><p>CRISPR_net/CRISPR_net.py : Python script to run CRISPR-Net for predicting off-target activities with only mismathces</p></li>
 </p></li>
 </ul>
 
