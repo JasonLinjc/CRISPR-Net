@@ -3,6 +3,7 @@ This repository includes a fused long-term recurrent convolutional neural networ
 
 # PREREQUISITE
 CRISPR-Net was conducted by Python 3.6 and Keras v2.2.4 (Using TensorFlow 1.12 backend) 
+
 Following Python packages should be installed:
 <ul>
 <li><p>scipy</p></li>
