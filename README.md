@@ -96,9 +96,3 @@ and saved to ./CRISPR_net_results_mismatches_only.csv:
 </p></li>
 </ul>
 
----------------------------------------
-Jiecong Lin
-
-jieconlin3-c@my.cityu.edu.hk
-
-January 10 2019
