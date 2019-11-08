@@ -88,7 +88,9 @@ Now you can run CRISPR-Net-mismatches-only as following:
     
 Then off-target aggregate score will be generated. 
 
-You can try CRISPR-Net-Aggregate on the our example file (input_example/aggregate_example_GACCTTGCATTGTACCCGAG.csv)
+You can try CRISPR-Net-Aggregate on the our example file (input_example/aggregate_example_GACCTTGCATTGTACCCGAG.csv) by:
+
+    python CRISPR_net_aggregate.py ./input_example/aggregate_example_GACCTTGCATTGTACCCGAG.csv
 
 
 # CONTAINS:
