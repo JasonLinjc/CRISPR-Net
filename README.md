@@ -81,7 +81,7 @@ Example input file:
 
 Save it as 'gRNA_offTargets.csv'.
 
-Now you can run CRISPR-Net-mismatches-only as following:
+Now you can run CRISPR-Net-Aggregate as following:
 
     $> python ./CRISPR_Net_aggregate.py gRNA_offTargets.csv
     ...
