@@ -25,6 +25,8 @@ seed(1)
 from tensorflow import set_random_seed
 set_random_seed(1)
 import scipy.stats
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
 
 def conv2d_bn(x,
               filters,
