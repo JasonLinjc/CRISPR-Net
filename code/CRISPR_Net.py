@@ -14,6 +14,7 @@ import Encoder_sgRNA_off
 import encode_data
 pd.options.display.max_columns = None
 from keras.models import model_from_json
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 def encode_on_off_seq_pairs(input_file = "./input_examples/on_off_seq_pairs_indels.txt"):
     inputs = pd.read_csv(input_file, delimiter=",", header=None, names=['on_seq', 'off_seq'])

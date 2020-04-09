@@ -12,6 +12,7 @@ from sklearn.externals import joblib
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 
 def encode_on_off_seq_pairs(on_seqs, off_seqs):
