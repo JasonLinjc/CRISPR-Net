@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/JasonLinjc/CRISPR_Net)
+
 # CRISPR-Net: A Recurrent Convolutional Network Quantifies CRISPR Off-target Activities with Indels and Mismatches
 This repository includes a recurrent convolutional neural network named CRISPR-Net for predicting the off-targets activities with insertions, deletions and mismatches in CRISPR/Cas9 gene editing. There are two command-line tools that can be used to quantify the off-target activities induced by CRISPR guide RNA. One is **CRISPR_Net.py** which can predict the off-target activities with indels and mismatches, the other is **CRISPR_Net_Aggregate.py** which aggregates the gRNA-target scores from CRISPR-Net into a single consensus off-target score.
 

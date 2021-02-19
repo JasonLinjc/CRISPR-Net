@@ -1,0 +1,6 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: keras 2.2.4
+    command: 'echo "TODO: Replace with command to start project"'
